@@ -1,6 +1,6 @@
 {
 	"name": "shadow-query",
-	"version": "0.0.37",
+	"version": "0.0.39",
 	"license": "MIT",
 	"author": {
 		"name": "Thorsten Roggendorf",
@@ -19,7 +19,6 @@
 	},
 	"files": [
 		"documentation/**",
-		"index.mjs",
 		"shadowQuery.mjs",
 		"shadowQuery.min.mjs"
 	],
@@ -28,6 +27,7 @@
 		"example": "demo",
 		"test": "test"
 	},
+	"exports": {".": "./shadowQuery.mjs"},
 	"keywords": [
 		"browser",
 		"javascript",
@@ -48,7 +48,7 @@
 		"uglify-es": "latest"
 	},
 	"scripts": {
-		"build": "npm run-script build-doc; npm run-script uglify; cp shadowQuery.mjs index.mjs",
+		"build": "npm run-script build-doc; npm run-script uglify",
 		"build-doc": "cp shadowQuery.mjs s.js; ./node_modules/.bin/jsdoc2md --separators -f s.js > documentation/api/README.md; rm s.js",
 		"lint": "eslint . --ext js,html --ignore-path .gitignore",
 		"prepare": "npm run build",

@@ -80,7 +80,7 @@ export class ShadowQuery extends Array {
 	 * @return {ShadowQuery} this for chaining calls
 	 */
 	addClass(className) {
-		for(const node of this) node.classList.add(className);
+		for(const node of this) node.classList && node.classList.add(className);
 		return this;
 	}
 
@@ -142,11 +142,15 @@ export class ShadowQuery extends Array {
 	attr(name, value) {
 		if(arguments.length === 1) return this[0] && this[0].getAttribute(name);
 		if((value === undefined) || (value === false) || (value === null)) {
-			for(const node of this) node.removeAttribute(name);
+			for(const node of this) {
+				node.removeAttribute && node.removeAttribute(name);
+			}
 		}
 		else {
 			if(typeof(value) !== 'string') value = JSON.stringify(value);
-			for(const node of this) node.setAttribute(name, value);
+			for(const node of this) {
+				node.setAttribute && node.setAttribute(name, value);
+			}
 		}
 		return this;
 	}
@@ -174,7 +178,9 @@ export class ShadowQuery extends Array {
 	  * @param {any} args arguments passed to the method
 	  * @return {Array}
 	  */
-	call(method, ...args) {return this.map(el => el[method](...args));}
+	call(method, ...args) {
+		return this.map(el => el[method] && el[method](...args));
+	}
 
 	/** "Chainable Call", same as call but returns "this"
 	  * @param {String} method method name
@@ -182,7 +188,7 @@ export class ShadowQuery extends Array {
 	  * @return {ShadowQuery}
 	  */
 	ccall(method, ...args) {
-		for(const node of this) node[method](...args);
+		for(const node of this) node[method] && node[method](...args);
 		return this;
 	}
 
@@ -200,7 +206,7 @@ export class ShadowQuery extends Array {
 		if(typeof(event) == 'string') {
 			event = new CustomEvent(event, customEventInit || {});
 		}
-		for(const node of this) node.dispatchEvent(event);
+		for(const node of this) node.dispatchEvent && node.dispatchEvent(event);
 		return this;
 	}
 
@@ -211,7 +217,7 @@ export class ShadowQuery extends Array {
 	 */
 	hasClass(className) {
 		for(const node of this) {
-			if(node.classList.contains(className)) return true;
+			if(node.classList && node.classList.contains(className)) return true;
 		}
 		return false;
 	}
@@ -238,7 +244,7 @@ export class ShadowQuery extends Array {
 				catch(e) {}
 			}
 			else {
-				node.removeEventListener(
+				node.removeEventListener && node.removeEventListener(
 					evt, callback._shadowQueryNoSelf || callback
 				);
 			}
@@ -332,7 +338,10 @@ export class ShadowQuery extends Array {
 				observer(node, noself, callback, attrFilter(evt));
 			}
 			else if(pExp.test(evt)) onProp(node, evt, noself, callback);
-			else node.addEventListener(evt, noself ? noSelf(callback) : callback);
+			else {
+				node.addEventListener &&
+					node.addEventListener(evt, noself ? noSelf(callback) : callback);
+			}
 		}
 		return this;
 	}
@@ -359,7 +368,10 @@ export class ShadowQuery extends Array {
 				onceObserver(node, callback, attrFilter(evt));
 			}
 			else if(pExp.test(evt)) onceProp(node, evt, callback);
-			else node.addEventListener(evt, callback, {once: true});
+			else {
+				node.addEventListener &&
+					node.addEventListener(evt, callback, {once: true});
+			}
 		}
 		return this;
 	}
@@ -435,7 +447,9 @@ export class ShadowQuery extends Array {
 	 * @return {ShadowQuery} this for chaining calls
 	 */
 	removeClass(className) {
-		for(const node of this) node.classList.remove(className);
+		for(const node of this) {
+			node.classList && node.classList.remove(className);
+		}
 		return this;
 	}
 
@@ -456,6 +470,7 @@ export class ShadowQuery extends Array {
 	 */
 	shadow(template, options = {mode: 'open'}) {
 		for(const node of this) {
+			if(!node.attachShadow) continue;
 			const s = node.attachShadow(options);
 			if(template) s.appendChild($.template(template));
 		}
@@ -506,11 +521,15 @@ export class ShadowQuery extends Array {
 	 */
 	toggleClass(className, state) {
 		if(arguments.length === 1) {
-			for(const node of this) node.classList.toggle(className);
+			for(const node of this) {
+				node.classList && node.classList.toggle(className);
+			}
 		}
 		else {
 			state = state ? true : false;
-			for(const node of this) node.classList.toggle(className, state);
+			for(const node of this) {
+				node.classList && node.classList.toggle(className, state);
+			}
 		}
 		return this;
 	}
