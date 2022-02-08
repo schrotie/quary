@@ -1,3 +1,9 @@
+0.0.39
+* call safety - only perform actions on applicable nodes
+
+0.0.38
+* removed index.mjs
+
 0.0.37
 * index.mjs is copy instead of link
 
