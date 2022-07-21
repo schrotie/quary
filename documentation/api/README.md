@@ -1,83 +1,81 @@
-<a name="module_shadowQuery"></a>
+<a name="module_quary"></a>
 
-## shadowQuery
-ShadowQuery module.
+## quary
+Quary module.
 
 
-* [shadowQuery](#module_shadowQuery)
-    * [.ShadowQuery](#module_shadowQuery.ShadowQuery)
-        * [new exports.ShadowQuery(node, [selector])](#new_module_shadowQuery.ShadowQuery_new)
-        * [.access(key, [value])](#module_shadowQuery.ShadowQuery+access) ⇒ <code>any</code>
-        * [.addClass(className)](#module_shadowQuery.ShadowQuery+addClass) ⇒ <code>ShadowQuery</code>
-        * [.after(nodes)](#module_shadowQuery.ShadowQuery+after) ⇒ <code>ShadowQuery</code>
-        * [.append(nodes)](#module_shadowQuery.ShadowQuery+append) ⇒ <code>ShadowQuery</code>
-        * [.attr(name, [value])](#module_shadowQuery.ShadowQuery+attr) ⇒ <code>ShadowQuery</code> \| <code>string</code>
-        * [.before(nodes)](#module_shadowQuery.ShadowQuery+before) ⇒ <code>ShadowQuery</code>
-        * [.call(method, ...args)](#module_shadowQuery.ShadowQuery+call) ⇒ <code>Array</code>
-        * [.ccall(method, ...args)](#module_shadowQuery.ShadowQuery+ccall) ⇒ <code>ShadowQuery</code>
-        * [.emit(event, [customEventInit])](#module_shadowQuery.ShadowQuery+emit) ⇒ <code>ShadowQuery</code>
-        * [.hasClass(className)](#module_shadowQuery.ShadowQuery+hasClass) ⇒ <code>bool</code>
-        * [.off(evt, callback)](#module_shadowQuery.ShadowQuery+off) ⇒ <code>ShadowQuery</code>
-        * [.on(evt, noSelfOrCallback, [callback])](#module_shadowQuery.ShadowQuery+on) ⇒ <code>ShadowQuery</code>
-        * [.once(evt, callback)](#module_shadowQuery.ShadowQuery+once) ⇒ <code>ShadowQuery</code>
-        * [.prepend(nodes)](#module_shadowQuery.ShadowQuery+prepend) ⇒ <code>ShadowQuery</code>
-        * [.prop(name, [value])](#module_shadowQuery.ShadowQuery+prop) ⇒ <code>ShadowQuery</code> \| <code>any</code>
-        * [.query(selector)](#module_shadowQuery.ShadowQuery+query) ⇒ <code>ShadowQuery</code>
-        * [.remove()](#module_shadowQuery.ShadowQuery+remove) ⇒ <code>ShadowQuery</code>
-        * [.removeClass(className)](#module_shadowQuery.ShadowQuery+removeClass) ⇒ <code>ShadowQuery</code>
-        * [.shadow([template], [options])](#module_shadowQuery.ShadowQuery+shadow) ⇒ <code>ShadowQuery</code>
-        * [.text([t])](#module_shadowQuery.ShadowQuery+text) ⇒ <code>ShadowQuery</code> \| <code>string</code>
-        * [.toggleClass(className, [state])](#module_shadowQuery.ShadowQuery+toggleClass) ⇒ <code>ShadowQuery</code>
-        * [.when(evt)](#module_shadowQuery.ShadowQuery+when) ⇒ <code>Promise</code>
-    * [.shadowQuery(node, [selector])](#module_shadowQuery.shadowQuery) ⇒ <code>ShadowQuery</code>
-    * [.template(template)](#module_shadowQuery.template) ⇒ <code>DocumentFragment</code> \| <code>dynTemplate</code>
+* [quary](#module_quary)
+    * [.Quary](#module_quary.Quary)
+        * [new exports.Quary(node, [selector])](#new_module_quary.Quary_new)
+        * [.access(key, [value])](#module_quary.Quary+access) ⇒ <code>any</code>
+        * [.addClass(className)](#module_quary.Quary+addClass) ⇒ <code>Quary</code>
+        * [.after(nodes)](#module_quary.Quary+after) ⇒ <code>Quary</code>
+        * [.append(nodes)](#module_quary.Quary+append) ⇒ <code>Quary</code>
+        * [.attr(name, [value])](#module_quary.Quary+attr) ⇒ <code>Quary</code> \| <code>string</code>
+        * [.before(nodes)](#module_quary.Quary+before) ⇒ <code>Quary</code>
+        * [.call(method, ...args)](#module_quary.Quary+call) ⇒ <code>Array</code>
+        * [.ccall(method, ...args)](#module_quary.Quary+ccall) ⇒ <code>Quary</code>
+        * [.emit(event, [customEventInit])](#module_quary.Quary+emit) ⇒ <code>Quary</code>
+        * [.hasClass(className)](#module_quary.Quary+hasClass) ⇒ <code>bool</code>
+        * [.off(evt, callback)](#module_quary.Quary+off) ⇒ <code>Quary</code>
+        * [.on(evt, noSelfOrCallback, [callback])](#module_quary.Quary+on) ⇒ <code>Quary</code>
+        * [.once(evt, callback)](#module_quary.Quary+once) ⇒ <code>Quary</code>
+        * [.prepend(nodes)](#module_quary.Quary+prepend) ⇒ <code>Quary</code>
+        * [.prop(name, [value])](#module_quary.Quary+prop) ⇒ <code>Quary</code> \| <code>any</code>
+        * [.query(selector)](#module_quary.Quary+query) ⇒ <code>Quary</code>
+        * [.removeClass(className)](#module_quary.Quary+removeClass) ⇒ <code>Quary</code>
+        * [.shadow([template], [options])](#module_quary.Quary+shadow) ⇒ <code>Quary</code>
+        * [.text([t])](#module_quary.Quary+text) ⇒ <code>Quary</code> \| <code>string</code>
+        * [.toggleClass(className, [state])](#module_quary.Quary+toggleClass) ⇒ <code>Quary</code>
+        * [.when(evt)](#module_quary.Quary+when) ⇒ <code>Promise</code>
+    * [.quary(node, [selector])](#module_quary.quary) ⇒ <code>Quary</code>
+    * [.template(template)](#module_quary.template) ⇒ <code>DocumentFragment</code> \| <code>dynTemplate</code>
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery"></a>
+<a name="module_quary.Quary"></a>
 
-### shadowQuery.ShadowQuery
-ShadowQuery Class. It extends Array, the elements being the nodes
+### quary.Quary
+Quary Class. It extends Array, the elements being the nodes
 selected or passed on initialization.
 It is exported so that you can extend it or manipulate the prototype
 or do whatever you like to it.
 
-**Kind**: static class of [<code>shadowQuery</code>](#module_shadowQuery)  
+**Kind**: static class of [<code>quary</code>](#module_quary)  
 
-* [.ShadowQuery](#module_shadowQuery.ShadowQuery)
-    * [new exports.ShadowQuery(node, [selector])](#new_module_shadowQuery.ShadowQuery_new)
-    * [.access(key, [value])](#module_shadowQuery.ShadowQuery+access) ⇒ <code>any</code>
-    * [.addClass(className)](#module_shadowQuery.ShadowQuery+addClass) ⇒ <code>ShadowQuery</code>
-    * [.after(nodes)](#module_shadowQuery.ShadowQuery+after) ⇒ <code>ShadowQuery</code>
-    * [.append(nodes)](#module_shadowQuery.ShadowQuery+append) ⇒ <code>ShadowQuery</code>
-    * [.attr(name, [value])](#module_shadowQuery.ShadowQuery+attr) ⇒ <code>ShadowQuery</code> \| <code>string</code>
-    * [.before(nodes)](#module_shadowQuery.ShadowQuery+before) ⇒ <code>ShadowQuery</code>
-    * [.call(method, ...args)](#module_shadowQuery.ShadowQuery+call) ⇒ <code>Array</code>
-    * [.ccall(method, ...args)](#module_shadowQuery.ShadowQuery+ccall) ⇒ <code>ShadowQuery</code>
-    * [.emit(event, [customEventInit])](#module_shadowQuery.ShadowQuery+emit) ⇒ <code>ShadowQuery</code>
-    * [.hasClass(className)](#module_shadowQuery.ShadowQuery+hasClass) ⇒ <code>bool</code>
-    * [.off(evt, callback)](#module_shadowQuery.ShadowQuery+off) ⇒ <code>ShadowQuery</code>
-    * [.on(evt, noSelfOrCallback, [callback])](#module_shadowQuery.ShadowQuery+on) ⇒ <code>ShadowQuery</code>
-    * [.once(evt, callback)](#module_shadowQuery.ShadowQuery+once) ⇒ <code>ShadowQuery</code>
-    * [.prepend(nodes)](#module_shadowQuery.ShadowQuery+prepend) ⇒ <code>ShadowQuery</code>
-    * [.prop(name, [value])](#module_shadowQuery.ShadowQuery+prop) ⇒ <code>ShadowQuery</code> \| <code>any</code>
-    * [.query(selector)](#module_shadowQuery.ShadowQuery+query) ⇒ <code>ShadowQuery</code>
-    * [.remove()](#module_shadowQuery.ShadowQuery+remove) ⇒ <code>ShadowQuery</code>
-    * [.removeClass(className)](#module_shadowQuery.ShadowQuery+removeClass) ⇒ <code>ShadowQuery</code>
-    * [.shadow([template], [options])](#module_shadowQuery.ShadowQuery+shadow) ⇒ <code>ShadowQuery</code>
-    * [.text([t])](#module_shadowQuery.ShadowQuery+text) ⇒ <code>ShadowQuery</code> \| <code>string</code>
-    * [.toggleClass(className, [state])](#module_shadowQuery.ShadowQuery+toggleClass) ⇒ <code>ShadowQuery</code>
-    * [.when(evt)](#module_shadowQuery.ShadowQuery+when) ⇒ <code>Promise</code>
+* [.Quary](#module_quary.Quary)
+    * [new exports.Quary(node, [selector])](#new_module_quary.Quary_new)
+    * [.access(key, [value])](#module_quary.Quary+access) ⇒ <code>any</code>
+    * [.addClass(className)](#module_quary.Quary+addClass) ⇒ <code>Quary</code>
+    * [.after(nodes)](#module_quary.Quary+after) ⇒ <code>Quary</code>
+    * [.append(nodes)](#module_quary.Quary+append) ⇒ <code>Quary</code>
+    * [.attr(name, [value])](#module_quary.Quary+attr) ⇒ <code>Quary</code> \| <code>string</code>
+    * [.before(nodes)](#module_quary.Quary+before) ⇒ <code>Quary</code>
+    * [.call(method, ...args)](#module_quary.Quary+call) ⇒ <code>Array</code>
+    * [.ccall(method, ...args)](#module_quary.Quary+ccall) ⇒ <code>Quary</code>
+    * [.emit(event, [customEventInit])](#module_quary.Quary+emit) ⇒ <code>Quary</code>
+    * [.hasClass(className)](#module_quary.Quary+hasClass) ⇒ <code>bool</code>
+    * [.off(evt, callback)](#module_quary.Quary+off) ⇒ <code>Quary</code>
+    * [.on(evt, noSelfOrCallback, [callback])](#module_quary.Quary+on) ⇒ <code>Quary</code>
+    * [.once(evt, callback)](#module_quary.Quary+once) ⇒ <code>Quary</code>
+    * [.prepend(nodes)](#module_quary.Quary+prepend) ⇒ <code>Quary</code>
+    * [.prop(name, [value])](#module_quary.Quary+prop) ⇒ <code>Quary</code> \| <code>any</code>
+    * [.query(selector)](#module_quary.Quary+query) ⇒ <code>Quary</code>
+    * [.removeClass(className)](#module_quary.Quary+removeClass) ⇒ <code>Quary</code>
+    * [.shadow([template], [options])](#module_quary.Quary+shadow) ⇒ <code>Quary</code>
+    * [.text([t])](#module_quary.Quary+text) ⇒ <code>Quary</code> \| <code>string</code>
+    * [.toggleClass(className, [state])](#module_quary.Quary+toggleClass) ⇒ <code>Quary</code>
+    * [.when(evt)](#module_quary.Quary+when) ⇒ <code>Promise</code>
 
 
 * * *
 
-<a name="new_module_shadowQuery.ShadowQuery_new"></a>
+<a name="new_module_quary.Quary_new"></a>
 
-#### new exports.ShadowQuery(node, [selector])
-Instantiate a ShadowQuery object.
-Will create an Array (ShadowQuery is an Array!) of nodes from node
+#### new exports.Quary(node, [selector])
+Instantiate a Quary object.
+Will create an Array (Quary is an Array!) of nodes from node
 parameter.
 If selector is passed, will query all nodes passed as node and the
 node-array will be the concatenated result of the queries.
@@ -88,20 +86,20 @@ as selector.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| node | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>NodeList</code> \| <code>ShadowQuery</code> \| <code>String</code> | the initial node(s) |
+| node | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>NodeList</code> \| <code>Quary</code> \| <code>String</code> | the initial node(s) |
 | [selector] | <code>String</code> | if passed will query node(s) with selector |
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+access"></a>
+<a name="module_quary.Quary+access"></a>
 
-#### shadowQuery.access(key, [value]) ⇒ <code>any</code>
+#### quary.access(key, [value]) ⇒ <code>any</code>
 access the selected nodes' attributes, properties or text depending on
 the leading character of the "key" parameter. This matches the syntax of
 event handler methods!
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
 **Returns**: <code>any</code> - if you pass a value will return this for chaining,
 otherwise will return an array with the retrieved values. NOTE: this
 differs from the attr, prop, and text methods which will return the
@@ -115,13 +113,13 @@ value of the first matched element!
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+addClass"></a>
+<a name="module_quary.Quary+addClass"></a>
 
-#### shadowQuery.addClass(className) ⇒ <code>ShadowQuery</code>
+#### quary.addClass(className) ⇒ <code>Quary</code>
 add a CSS-class to all selected nodes; uses classList.add
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -130,46 +128,46 @@ add a CSS-class to all selected nodes; uses classList.add
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+after"></a>
+<a name="module_quary.Quary+after"></a>
 
-#### shadowQuery.after(nodes) ⇒ <code>ShadowQuery</code>
+#### quary.after(nodes) ⇒ <code>Quary</code>
 Insert DOM after all selected nodes
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>ShadowQuery</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template $.template is the result of a call to [$.template](#module_shadowQuery.template) |
+| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>Quary</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template $.template is the result of a call to [$.template](#module_quary.template) |
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+append"></a>
+<a name="module_quary.Quary+append"></a>
 
-#### shadowQuery.append(nodes) ⇒ <code>ShadowQuery</code>
+#### quary.append(nodes) ⇒ <code>Quary</code>
 Append DOM to all selected nodes
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>ShadowQuery</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template $.template is the result of a call to [$.template](#module_shadowQuery.template) |
+| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>Quary</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template $.template is the result of a call to [$.template](#module_quary.template) |
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+attr"></a>
+<a name="module_quary.Quary+attr"></a>
 
-#### shadowQuery.attr(name, [value]) ⇒ <code>ShadowQuery</code> \| <code>string</code>
+#### quary.attr(name, [value]) ⇒ <code>Quary</code> \| <code>string</code>
 get or set attribute values. If called with one parameters, will return
 the respective attribute value of the first selected element. If called
 with two parameters, will set the respective attribute for all selected
 elements and return this for chaining.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> \| <code>string</code> - this for chaining or attribute value  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> \| <code>string</code> - this for chaining or attribute value  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -191,28 +189,28 @@ document.registerElement('hello-world', class extends HTMLElement {
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+before"></a>
+<a name="module_quary.Quary+before"></a>
 
-#### shadowQuery.before(nodes) ⇒ <code>ShadowQuery</code>
+#### quary.before(nodes) ⇒ <code>Quary</code>
 Insert DOM before all selected nodes
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>ShadowQuery</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template $.template is the result of a call to [$.template](#module_shadowQuery.template) |
+| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>Quary</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template $.template is the result of a call to [$.template](#module_quary.template) |
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+call"></a>
+<a name="module_quary.Quary+call"></a>
 
-#### shadowQuery.call(method, ...args) ⇒ <code>Array</code>
+#### quary.call(method, ...args) ⇒ <code>Array</code>
 calls the designated method on each selected element and returns an array
 and return an array of the results.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -222,12 +220,12 @@ and return an array of the results.
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+ccall"></a>
+<a name="module_quary.Quary+ccall"></a>
 
-#### shadowQuery.ccall(method, ...args) ⇒ <code>ShadowQuery</code>
+#### quary.ccall(method, ...args) ⇒ <code>Quary</code>
 "Chainable Call", same as call but returns "this"
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -237,12 +235,12 @@ and return an array of the results.
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+emit"></a>
+<a name="module_quary.Quary+emit"></a>
 
-#### shadowQuery.emit(event, [customEventInit]) ⇒ <code>ShadowQuery</code>
+#### quary.emit(event, [customEventInit]) ⇒ <code>Quary</code>
 calls dispatchEvent selected element
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -252,13 +250,13 @@ calls dispatchEvent selected element
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+hasClass"></a>
+<a name="module_quary.Quary+hasClass"></a>
 
-#### shadowQuery.hasClass(className) ⇒ <code>bool</code>
+#### quary.hasClass(className) ⇒ <code>bool</code>
 check if a selected element has the designated CSS-class ;
 uses classList.contains
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
 **Returns**: <code>bool</code> - true if found, else undefined  
 
 | Param | Type | Description |
@@ -268,15 +266,15 @@ uses classList.contains
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+off"></a>
+<a name="module_quary.Quary+off"></a>
 
-#### shadowQuery.off(evt, callback) ⇒ <code>ShadowQuery</code>
+#### quary.off(evt, callback) ⇒ <code>Quary</code>
 unregister an event handler on all selected nodes; support attribute
 value, property- and text change events (see
-[ShadowQuery.on](#module_shadowQuery.ShadowQuery+on));
+[Quary.on](#module_quary.Quary+on));
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -286,9 +284,9 @@ value, property- and text change events (see
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+on"></a>
+<a name="module_quary.Quary+on"></a>
 
-#### shadowQuery.on(evt, noSelfOrCallback, [callback]) ⇒ <code>ShadowQuery</code>
+#### quary.on(evt, noSelfOrCallback, [callback]) ⇒ <code>Quary</code>
 register an event handler on all selected nodes
 
 This is a very powerful utility: you can register standard event handlers.
@@ -303,7 +301,7 @@ handlers. Attribute and text event handlers are implemented as
 MutationObservers. Property event handlers add getter and setter
 methods to the object instance. It is done on the instance and not on the
 prototype in order to less likely interfere with getters and setters
-implemented in the class. ShadowQuery should - but currently doesn't -
+implemented in the class. Quary should - but currently doesn't -
 handle those. I recommend not using property event handlers on components
 that you do not own yourself. Properties are the most efficient way of
 data binding, but they don't support it well. Attribute- and text event
@@ -321,16 +319,16 @@ sets a property _before_ your element is registered. In these cases the
 property will be written as an instance property _over_ the setter method
 (which comes later!). This is a trivial problem but easy to miss and
 somewhat tedious to work around. If you use `$(this).on('myProperty')`,
-ShadowQuery will take care of this for you. However: don't implement
-getters and/or setters for you properties, ShadowQuery will do that!
+Quary will take care of this for you. However: don't implement
+getters and/or setters for you properties, Quary will do that!
 Just register your event handlers with it!
 
 Quite often an event handler changes something and directly or indirectly
 triggers the event, that it handles. The noSelf option helps break this
 recursion. noSelf works with all types of event handlers.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -371,19 +369,19 @@ $(this, 'label').on('§',      this._onLabelTextChange.bind(this));
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+once"></a>
+<a name="module_quary.Quary+once"></a>
 
-#### shadowQuery.once(evt, callback) ⇒ <code>ShadowQuery</code>
+#### quary.once(evt, callback) ⇒ <code>Quary</code>
 register an event handler on all selected nodes; support attribute
 value, property- and text change events (see
-[ShadowQuery.on](#module_shadowQuery.ShadowQuery+on));
+[Quary.on](#module_quary.Quary+on));
 callback will be called at most once; Note:
 this is called "one" in jQuery. For _once_ I deviate from jQuery since
 the name is IMHO a bad choice. Instead I use the better name established
 in node.js
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -393,31 +391,31 @@ in node.js
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+prepend"></a>
+<a name="module_quary.Quary+prepend"></a>
 
-#### shadowQuery.prepend(nodes) ⇒ <code>ShadowQuery</code>
+#### quary.prepend(nodes) ⇒ <code>Quary</code>
 Insert DOM as first content of all selected nodes
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>ShadowQuery</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template getTemplate is the result of a call to this.getTemplate (see [$.template](#module_shadowQuery.template)) |
+| nodes | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>Quary</code> \| <code>String</code> \| <code>$.template</code> | DOM to insert; String will be transformed by calling $.template getTemplate is the result of a call to this.getTemplate (see [$.template](#module_quary.template)) |
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+prop"></a>
+<a name="module_quary.Quary+prop"></a>
 
-#### shadowQuery.prop(name, [value]) ⇒ <code>ShadowQuery</code> \| <code>any</code>
+#### quary.prop(name, [value]) ⇒ <code>Quary</code> \| <code>any</code>
 get or set property values. If called with one parameters, will return
 the respective property value of the first selected element. If called
 with two parameters, will set the respective property for all selected
 elements and return this for chaining.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> \| <code>any</code> - this for chaining or property value  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> \| <code>any</code> - this for chaining or property value  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -441,16 +439,16 @@ document.registerElement('hello-world', class extends HTMLElement {
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+query"></a>
+<a name="module_quary.Quary+query"></a>
 
-#### shadowQuery.query(selector) ⇒ <code>ShadowQuery</code>
-calls querySelector on all selected nodes and return new ShadowQuery
+#### quary.query(selector) ⇒ <code>Quary</code>
+calls querySelector on all selected nodes and return new Quary
 with the concatenated result. Note that this is analogous to jQuery's
-find method. But since ShadowQuery is an Array, this would overwrite
+find method. But since Quary is an Array, this would overwrite
 Array.find. Thus I renamed the method to 'query.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - new ShadowQuery object with the query-result  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - new Quary object with the query-result  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -459,22 +457,13 @@ Array.find. Thus I renamed the method to 'query.
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+remove"></a>
+<a name="module_quary.Quary+removeClass"></a>
 
-#### shadowQuery.remove() ⇒ <code>ShadowQuery</code>
-Removes matched elements from DOM
-
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-
-* * *
-
-<a name="module_shadowQuery.ShadowQuery+removeClass"></a>
-
-#### shadowQuery.removeClass(className) ⇒ <code>ShadowQuery</code>
+#### quary.removeClass(className) ⇒ <code>Quary</code>
 remove a CSS-class from all selected nodes; uses classList.remove
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -483,9 +472,9 @@ remove a CSS-class from all selected nodes; uses classList.remove
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+shadow"></a>
+<a name="module_quary.Quary+shadow"></a>
 
-#### shadowQuery.shadow([template], [options]) ⇒ <code>ShadowQuery</code>
+#### quary.shadow([template], [options]) ⇒ <code>Quary</code>
 `$(this).shadow(template)` is just a shorthand for
 ```js
 this.attachShadow(options).appendChild(template)
@@ -493,12 +482,12 @@ this.attachShadow(options).appendChild(template)
 You will likely do something like this in the majority of your web
 component's connectedCallbacks.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [template] | <code>String</code> | passed to [$.template](#module_shadowQuery.template) |
+| [template] | <code>String</code> | passed to [$.template](#module_quary.template) |
 | [options] | <code>Object</code> | passed to attachShadow |
 
 **Example**  
@@ -508,16 +497,16 @@ connectedCallback() {$(this).shadow('Hello world!');}
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+text"></a>
+<a name="module_quary.Quary+text"></a>
 
-#### shadowQuery.text([t]) ⇒ <code>ShadowQuery</code> \| <code>string</code>
+#### quary.text([t]) ⇒ <code>Quary</code> \| <code>string</code>
 get or set textNode values. If called without parameters, will return
 the respective textNode value of the first selected element. If called
 with one parameters, will set the respective textNode value for all
 selected elements and return this for chaining.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> \| <code>string</code> - this for chaining or text value  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> \| <code>string</code> - this for chaining or text value  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -538,32 +527,32 @@ document.registerElement('hello-world', class extends HTMLElement {
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+toggleClass"></a>
+<a name="module_quary.Quary+toggleClass"></a>
 
-#### shadowQuery.toggleClass(className, [state]) ⇒ <code>ShadowQuery</code>
+#### quary.toggleClass(className, [state]) ⇒ <code>Quary</code>
 toggle a CSS-class on all selected nodes; uses classList.toggle
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
-**Returns**: <code>ShadowQuery</code> - this for chaining calls  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
+**Returns**: <code>Quary</code> - this for chaining calls  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | className | <code>string</code> | the class to toggle |
-| [state] | <code>bool</code> | if true [addClass](#module_shadowQuery.ShadowQuery+addClass), if false [removeClass](#module_shadowQuery.ShadowQuery+removeClass) |
+| [state] | <code>bool</code> | if true [addClass](#module_quary.Quary+addClass), if false [removeClass](#module_quary.Quary+removeClass) |
 
 
 * * *
 
-<a name="module_shadowQuery.ShadowQuery+when"></a>
+<a name="module_quary.Quary+when"></a>
 
-#### shadowQuery.when(evt) ⇒ <code>Promise</code>
+#### quary.when(evt) ⇒ <code>Promise</code>
 Alternative to
-[ShadowQuery.once](#module_shadowQuery.ShadowQuery+once)
+[Quary.once](#module_quary.Quary+once)
 for promise based programming . Same syntax as once, but does not accept
 callback, instead returns a promise (not "this" as most other messages!)
 that resolves when the event occurs.
 
-**Kind**: instance method of [<code>ShadowQuery</code>](#module_shadowQuery.ShadowQuery)  
+**Kind**: instance method of [<code>Quary</code>](#module_quary.Quary)  
 
 | Param | Type |
 | --- | --- |
@@ -572,25 +561,25 @@ that resolves when the event occurs.
 
 * * *
 
-<a name="module_shadowQuery.shadowQuery"></a>
+<a name="module_quary.quary"></a>
 
-### shadowQuery.shadowQuery(node, [selector]) ⇒ <code>ShadowQuery</code>
-Instantiate a ShadowQuery object. See [ShadowQuery](#module_shadowQuery.ShadowQuery)
+### quary.quary(node, [selector]) ⇒ <code>Quary</code>
+Instantiate a Quary object. See [Quary](#module_quary.Quary)
 
-**Kind**: static method of [<code>shadowQuery</code>](#module_shadowQuery)  
-**Returns**: <code>ShadowQuery</code> - instance  
+**Kind**: static method of [<code>quary</code>](#module_quary)  
+**Returns**: <code>Quary</code> - instance  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| node | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>NodeList</code> \| <code>ShadowQuery</code> | the initial node |
+| node | <code>Node</code> \| <code>Array.&lt;Node&gt;</code> \| <code>NodeList</code> \| <code>Quary</code> | the initial node |
 | [selector] | <code>String</code> | if passed will query node(s) with selector |
 
 
 * * *
 
-<a name="module_shadowQuery.template"></a>
+<a name="module_quary.template"></a>
 
-### shadowQuery.template(template) ⇒ <code>DocumentFragment</code> \| <code>dynTemplate</code>
+### quary.template(template) ⇒ <code>DocumentFragment</code> \| <code>dynTemplate</code>
 `$.template` creates an HTMLTemplateElement, initializes it with the passed
 template string, stores it in its template library, and returns a clone
 of the content. On subsequent calls, the existing template is efficiently
@@ -599,13 +588,13 @@ cloned.
 Instead of template string you can also pass an object in order to generate
 a dynamic template.
 Dynamic templates can render arrays and render conditionally. Using
-dynamic templates together with the ShadowQuery DOM helper insertion
+dynamic templates together with the Quary DOM helper insertion
 functions like `append` allows you to easily manage nodes based on dynamic
 conditions. Note that when a condition changes to false or an array shrinks,
-ShadowQuery DOM helper _insertion_ methods will actually _remove_ content
+Quary DOM helper _insertion_ methods will actually _remove_ content
 instead of _insert_ it. See parameter description for details.
 
-**Kind**: static method of [<code>shadowQuery</code>](#module_shadowQuery)  
+**Kind**: static method of [<code>quary</code>](#module_quary)  
 **Returns**: <code>DocumentFragment</code> \| <code>dynTemplate</code> - cloned from the created
 template, or the processor of a DynTemplate if passed an object for a
 dynamic template.  
