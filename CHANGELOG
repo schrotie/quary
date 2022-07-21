@@ -1,3 +1,7 @@
+1.0.0
+* renamed package from shadow-query to quary and adapted code and docs
+* adapted docs for 1.0 release
+
 0.0.39
 * call safety - only perform actions on applicable nodes
 

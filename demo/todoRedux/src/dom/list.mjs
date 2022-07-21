@@ -1,5 +1,5 @@
 import './item.mjs';
-import $ from '../../node_modules/shadow-query/shadowQuery.mjs';
+import $ from '../../node_modules/quary/quary.mjs';
 
 window.customElements.define('sq-todo-list', class extends HTMLElement {
 	constructor() {

@@ -4,7 +4,7 @@
 
 Play with the "Hello world!" demo at [codepen](https://codepen.io/schrotie/pen/rQYZae).
 
-[This] is web component 101. The codepen lets you compare vanilla hello world to ShadowQuery. Both are identical except for how the shadow DOM is initialized. You will want to follow these steps for any web component you develop:
+[This] is web component 101. The codepen lets you compare vanilla hello world to Quary. Both are identical except for how the shadow DOM is initialized. You will want to follow these steps for any web component you develop:
 
 1. Define you element with `customElements.define`, naming the tag of your element and passing a ES6 class to handle that tag. The class always extends `HTMLElement` or another class that has `HTMLElement` in its ancestor chain.
 2. In the constructor of that class, call `super()` which calls the HTMLElement constructor.
@@ -51,7 +51,7 @@ $(this).shadow('<span>Hello world!</span>');
 ```
 and only the first text is green.
 
-ShadowQuery is just a collection of shorthand code for native technology. In this example I abbreviated the vanilla example to make it easier to read and understand. Web components usually use templates for creating their shadow DOM. `innerHTML = '...'` is pretty expensive, and when many such elements occur in a document, performance suffers. Therefor `innerHTML = '...'` is only done once in an `HTMLTemplateElement` (which has the tag `<template>`) and then this is cloned, which is much more efficient. ShadowQuery automatically does this. The full vanilla example looks like this:
+Quary is just a collection of shorthand code for native technology. In this example I abbreviated the vanilla example to make it easier to read and understand. Web components usually use templates for creating their shadow DOM. `innerHTML = '...'` is pretty expensive, and when many such elements occur in a document, performance suffers. Therefor `innerHTML = '...'` is only done once in an `HTMLTemplateElement` (which has the tag `<template>`) and then this is cloned, which is much more efficient. Quary automatically does this. The full vanilla example looks like this:
 ```js
 const template = document.createElement('template');
 template.innerHTML = 'Hello world!';
@@ -65,9 +65,9 @@ window.customElements.define('vanilla-hello-world', class extends HTMLElement {
 ```
 Go ahead, try this in codepen, too!
 
-We have covered web components basics and how ShadowQuery helps with that. [Next] we'll explore several more ShadowQuery features in another pretty simple web component.
+We have covered web components basics and how Quary helps with that. [Next] we'll explore several more Quary features in another pretty simple web component.
 
 [codepen]: https://codepen.io/schrotie/pen/rQYZae
-[This]: https://github.com/schrotie/shadow-query/tree/master/demo/helloWorld
-[Content]: https://github.com/schrotie/shadow-query/tree/master/demo
-[Next]: https://github.com/schrotie/shadow-query/tree/master/demo/helloFramework
+[This]: https://github.com/schrotie/quary/tree/master/demo/helloWorld
+[Content]: https://github.com/schrotie/quary/tree/master/demo
+[Next]: https://github.com/schrotie/quary/tree/master/demo/helloFramework

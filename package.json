@@ -1,5 +1,5 @@
 {
-	"name": "shadow-query",
+	"name": "quary",
 	"version": "0.0.39",
 	"license": "MIT",
 	"author": {
@@ -8,33 +8,33 @@
 		"url": "http://schrotie.de"
 	},
 	"description": "micro-library for writing high performance vanilla web components",
-	"homepage": "https://github.com/schrotie/shadow-query#readme",
+	"homepage": "https://github.com/schrotie/quary#readme",
 	"bugs": {
-		"url": "https://github.com/shrotie/shadow-query/issues",
+		"url": "https://github.com/shrotie/quary/issues",
 		"email": "junk@shrotie.de"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/schrotie/shadow-query"
+		"url": "https://github.com/schrotie/quary"
 	},
 	"files": [
 		"documentation/**",
-		"shadowQuery.mjs",
-		"shadowQuery.min.mjs"
+		"quary.mjs",
+		"quary.min.mjs"
 	],
 	"directories": {
 		"doc": "documentation",
 		"example": "demo",
 		"test": "test"
 	},
-	"exports": {".": "./shadowQuery.mjs"},
+	"exports": {".": "./quary.mjs"},
 	"keywords": [
 		"browser",
 		"javascript",
 		"library",
 		"web-components"
 	],
-	"browser": "shadowQuery.mjs",
+	"browser": "quary.mjs",
 	"devDependencies": {
 		"chai": "latest",
 		"eslint": "^3.12.0",
@@ -49,12 +49,12 @@
 	},
 	"scripts": {
 		"build": "npm run-script build-doc; npm run-script uglify",
-		"build-doc": "cp shadowQuery.mjs s.js; ./node_modules/.bin/jsdoc2md --separators -f s.js > documentation/api/README.md; rm s.js",
+		"build-doc": "cp quary.mjs s.js; ./node_modules/.bin/jsdoc2md --separators -f s.js > documentation/api/README.md; rm s.js",
 		"lint": "eslint . --ext js,html --ignore-path .gitignore",
 		"prepare": "npm run build",
 		"start": "${PWD}/node_modules/.bin/serve &",
-		"stop": "ps aux | grep 'shadow-query/node_modules/.bin/serve' | grep -v grep | awk '{print $2}' | xargs kill",
+		"stop": "ps aux | grep 'quary/node_modules/.bin/serve' | grep -v grep | awk '{print $2}' | xargs kill",
 		"test": "npm start; sleep 2; ./node_modules/.bin/mocha-headless-chrome -f http://localhost:5000/test/test.html; sleep 5; npm stop",
-		"uglify": "./node_modules/uglify-es/bin/uglifyjs -c -m --keep-fnames -- shadowQuery.mjs > shadowQuery.min.mjs; sed -i '1s;^;/* eslint-disable */\\n;' shadowQuery.min.mjs"
+		"uglify": "./node_modules/uglify-es/bin/uglifyjs -c -m --keep-fnames -- quary.mjs > quary.min.mjs; sed -i '1s;^;/* eslint-disable */\\n;' quary.min.mjs"
 	}
 }

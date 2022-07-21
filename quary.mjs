@@ -5,8 +5,8 @@
  */
 
 /**
- * ShadowQuery module.
- * @module shadowQuery
+ * Quary module.
+ * @module quary
  */
 
 const aExp = /^(attr:)|@/;
@@ -14,21 +14,21 @@ const pExp = /^(prop:)|\./;
 const tExp = /^((text:)|§)$/;
 
 /**
- * ShadowQuery Class. It extends Array, the elements being the nodes
+ * Quary Class. It extends Array, the elements being the nodes
  * selected or passed on initialization.
  * It is exported so that you can extend it or manipulate the prototype
  * or do whatever you like to it.
  */
-export class ShadowQuery extends Array {
-	/** Instantiate a ShadowQuery object.
-	 * Will create an Array (ShadowQuery is an Array!) of nodes from node
+export class Quary extends Array {
+	/** Instantiate a Quary object.
+	 * Will create an Array (Quary is an Array!) of nodes from node
 	 * parameter.
 	 * If selector is passed, will query all nodes passed as node and the
 	 * node-array will be the concatenated result of the queries.
 	 * Note that for the node parameter, it selects node.shadowRoot by default,
 	 * if available. If you want the node and not its shadowRoot, pass ':host'
 	 * as selector.
-	 * @param {Node|Node[]|NodeList|ShadowQuery|String} node - the initial
+	 * @param {Node|Node[]|NodeList|Quary|String} node - the initial
 	 * node(s)
 	 * @param {String=} selector - if passed will query node(s) with selector
 	 */
@@ -36,8 +36,8 @@ export class ShadowQuery extends Array {
 		if(node === 0) return super(0); // eslint-disable-line constructor-super
 		let array;
 		if(Array.isArray(node)) array = node;
-		else if(typeof(node) === 'string') array = [shadowQuery.template(node)];
-		else if(node instanceof ShadowQuery) array = node;
+		else if(typeof(node) === 'string') array = [quary.template(node)];
+		else if(node instanceof Quary) array = node;
 		else if(node instanceof NodeList || node instanceof HTMLCollection) {
 			array = Array.from(node);
 		}
@@ -77,7 +77,7 @@ export class ShadowQuery extends Array {
 
 	/** add a CSS-class to all selected nodes; uses classList.add
 	 * @param {string} className - the class to add
-	 * @return {ShadowQuery} this for chaining calls
+	 * @return {Quary} this for chaining calls
 	 */
 	addClass(className) {
 		for(const node of this) node.classList && node.classList.add(className);
@@ -86,11 +86,11 @@ export class ShadowQuery extends Array {
 
 	/**
 	 * Insert DOM after all selected nodes
-	 * @param {Node|Node[]|ShadowQuery|String|$.template} nodes - DOM to insert;
+	 * @param {Node|Node[]|Quary|String|$.template} nodes - DOM to insert;
 	 * String will be transformed by calling $.template
 	 * $.template is the result of a call to
-	 * {@link module:shadowQuery.template $.template}
-	 * @return {ShadowQuery} this for chaining calls
+	 * {@link module:quary.template $.template}
+	 * @return {Quary} this for chaining calls
 	 */
 	after(nodes) {
 		for(const node of this) {
@@ -109,11 +109,11 @@ export class ShadowQuery extends Array {
 
 	/**
 	 * Append DOM to all selected nodes
-	 * @param {Node|Node[]|ShadowQuery|String|$.template} nodes - DOM to insert;
+	 * @param {Node|Node[]|Quary|String|$.template} nodes - DOM to insert;
 	 * String will be transformed by calling $.template
 	 * $.template is the result of a call to
-	 * {@link module:shadowQuery.template $.template}
-	 * @return {ShadowQuery} this for chaining calls
+	 * {@link module:quary.template $.template}
+	 * @return {Quary} this for chaining calls
 	 */
 	append(nodes) {
 		for(const node of this) toNodes(node, nodes, n => node.appendChild(n));
@@ -137,10 +137,12 @@ export class ShadowQuery extends Array {
 	 * @param {string} name - attribute name
 	 * @param {string=} value - value to set for attribute[name] on all elements;
 	 * if undefined or false will call removeAttribute!
-	 * @return {ShadowQuery|string} this for chaining or attribute value
+	 * @return {Quary|string} this for chaining or attribute value
 	 */
 	attr(name, value) {
-		if(arguments.length === 1) return this[0] && this[0].getAttribute(name);
+		if(arguments.length === 1) {
+			return this[0] && this[0].getAttribute && this[0].getAttribute(name);
+		}
 		if((value === undefined) || (value === false) || (value === null)) {
 			for(const node of this) {
 				node.removeAttribute && node.removeAttribute(name);
@@ -157,11 +159,11 @@ export class ShadowQuery extends Array {
 
 	/**
 	 * Insert DOM before all selected nodes
-	 * @param {Node|Node[]|ShadowQuery|String|$.template} nodes - DOM to insert;
+	 * @param {Node|Node[]|Quary|String|$.template} nodes - DOM to insert;
 	 * String will be transformed by calling $.template
 	 * $.template is the result of a call to
-	 * {@link module:shadowQuery.template $.template}
-	 * @return {ShadowQuery} this for chaining calls
+	 * {@link module:quary.template $.template}
+	 * @return {Quary} this for chaining calls
 	 */
 	before(nodes) {
 		for(const node of this) {
@@ -185,7 +187,7 @@ export class ShadowQuery extends Array {
 	/** "Chainable Call", same as call but returns "this"
 	  * @param {String} method method name
 	  * @param {any} args arguments passed to the method
-	  * @return {ShadowQuery}
+	  * @return {Quary}
 	  */
 	ccall(method, ...args) {
 		for(const node of this) node[method] && node[method](...args);
@@ -197,7 +199,7 @@ export class ShadowQuery extends Array {
 	  * with customEventInit, otherwise emits event as passed
 	  * @param {Object=} customEventInit use to initialize CustomEvent,
 	  * only if event is String
-	  * @return {ShadowQuery}
+	  * @return {Quary}
 	*/
 	emit(event, customEventInit) {
 		if((event instanceof Event) && customEventInit) throw new Error(
@@ -225,12 +227,12 @@ export class ShadowQuery extends Array {
 	/**
 	 * unregister an event handler on all selected nodes; support attribute
 	 * value, property- and text change events (see
-	 * {@link module:shadowQuery.ShadowQuery#on ShadowQuery.on});
+	 * {@link module:quary.Quary#on Quary.on});
 	 * @param {String} evt event name to pass to removeEventListener. To stop
 	 * listening to attribute changes do `attr:name`, for properties `prop:name`,
 	 * for text use `text:`
 	 * @param {Function} callback function to unregister
-	 * @return {ShadowQuery} this for chaining
+	 * @return {Quary} this for chaining
 	 */
 	off(evt, callback) {
 		for(const node of this) {
@@ -245,7 +247,7 @@ export class ShadowQuery extends Array {
 			}
 			else {
 				node.removeEventListener && node.removeEventListener(
-					evt, callback._shadowQueryNoSelf || callback
+					evt, callback._quaryNoSelf || callback
 				);
 			}
 		}
@@ -267,7 +269,7 @@ export class ShadowQuery extends Array {
 	 * MutationObservers. Property event handlers add getter and setter
 	 * methods to the object instance. It is done on the instance and not on the
 	 * prototype in order to less likely interfere with getters and setters
-	 * implemented in the class. ShadowQuery should - but currently doesn't -
+	 * implemented in the class. Quary should - but currently doesn't -
 	 * handle those. I recommend not using property event handlers on components
 	 * that you do not own yourself. Properties are the most efficient way of
 	 * data binding, but they don't support it well. Attribute- and text event
@@ -285,8 +287,8 @@ export class ShadowQuery extends Array {
 	 * property will be written as an instance property _over_ the setter method
 	 * (which comes later!). This is a trivial problem but easy to miss and
 	 * somewhat tedious to work around. If you use `$(this).on('myProperty')`,
-	 * ShadowQuery will take care of this for you. However: don't implement
-	 * getters and/or setters for you properties, ShadowQuery will do that!
+	 * Quary will take care of this for you. However: don't implement
+	 * getters and/or setters for you properties, Quary will do that!
 	 * Just register your event handlers with it!
 	 *
 	 * Quite often an event handler changes something and directly or indirectly
@@ -327,7 +329,7 @@ export class ShadowQuery extends Array {
 	 * @param {String|Function} noSelfOrCallback if you want to catch recursive
 	 * events pass 'noSelf', otherwise put callback here
 	 * @param {Function=} callback function to call on event
-	 * @return {ShadowQuery} this for chaining
+	 * @return {Quary} this for chaining
 	 */
 	on(evt, noSelfOrCallback, callback) {
 		const noself = (arguments.length === 3)&&(noSelfOrCallback === 'noSelf');
@@ -349,7 +351,7 @@ export class ShadowQuery extends Array {
 	/**
 	 * register an event handler on all selected nodes; support attribute
 	 * value, property- and text change events (see
-	 * {@link module:shadowQuery.ShadowQuery#on ShadowQuery.on});
+	 * {@link module:quary.Quary#on Quary.on});
 	 * callback will be called at most once; Note:
 	 * this is called "one" in jQuery. For _once_ I deviate from jQuery since
 	 * the name is IMHO a bad choice. Instead I use the better name established
@@ -359,7 +361,7 @@ export class ShadowQuery extends Array {
 	 * for changes of the attribute called 'name'. For properties `prop:name`,
 	 * for text use `text:`
 	 * @param {Function} callback function to call on event
-	 * @return {ShadowQuery} this for chaining
+	 * @return {Quary} this for chaining
 	 */
 	once(evt, callback) {
 		for(const node of this) {
@@ -378,11 +380,11 @@ export class ShadowQuery extends Array {
 
 	/**
 	 * Insert DOM as first content of all selected nodes
-	 * @param {Node|Node[]|ShadowQuery|String|$.template} nodes - DOM to insert;
+	 * @param {Node|Node[]|Quary|String|$.template} nodes - DOM to insert;
 	 * String will be transformed by calling $.template
 	 * getTemplate is the result of a call to this.getTemplate
-	 * (see {@link module:shadowQuery.template $.template})
-	 * @return {ShadowQuery} this for chaining calls
+	 * (see {@link module:quary.template $.template})
+	 * @return {Quary} this for chaining calls
 	 */
 	prepend(nodes) {
 		for(const node of this) {
@@ -412,7 +414,7 @@ export class ShadowQuery extends Array {
 	 * });
 	 * @param {string} name - property name
 	 * @param {string=} value - value to set for node[name] on all elements
-	 * @return {ShadowQuery|any} this for chaining or property value
+	 * @return {Quary|any} this for chaining or property value
 	 */
 	prop(name, value) {
 		if(arguments.length === 1) return this[0] && this[0][name];
@@ -421,30 +423,18 @@ export class ShadowQuery extends Array {
 	}
 
 	/**
-	 * calls querySelector on all selected nodes and return new ShadowQuery
+	 * calls querySelector on all selected nodes and return new Quary
 	 * with the concatenated result. Note that this is analogous to jQuery's
-	 * find method. But since ShadowQuery is an Array, this would overwrite
+	 * find method. But since Quary is an Array, this would overwrite
 	 * Array.find. Thus I renamed the method to 'query.
 	 * @param {String} selector CSS-selector to query
-	 * @return {ShadowQuery} new ShadowQuery object with the query-result
+	 * @return {Quary} new Quary object with the query-result
 	 */
-	query(selector) {return new ShadowQuery(find(this, selector));}
-
-	/** Removes matched elements from DOM
-	  * @return {ShadowQuery} */
-	remove() {
-		const warning = 'remove method is deprecated and will be removed soon';
-		const alternative = 'use call("remove") instead';
-		const polyfill = '(and optionally use a polyfill for IE)';
-		// eslint-disable-next-line no-console
-		console.warn(`${warning}, ${alternative} ${polyfill}`);
-		for(const node of this) node.parentElement.removeChild(node);
-		return this;
-	}
+	query(selector) {return new Quary(find(this, selector));}
 
 	/** remove a CSS-class from all selected nodes; uses classList.remove
 	 * @param {string} className - the class to remove
-	 * @return {ShadowQuery} this for chaining calls
+	 * @return {Quary} this for chaining calls
 	 */
 	removeClass(className) {
 		for(const node of this) {
@@ -464,9 +454,9 @@ export class ShadowQuery extends Array {
 	 * @example
 	 * connectedCallback() {$(this).shadow('Hello world!');}
 	 * @param {String=} template passed to
-	 * {@link module:shadowQuery.template $.template}
+	 * {@link module:quary.template $.template}
 	 * @param {Object=} options passed to attachShadow
-	 * @return {ShadowQuery} this for chaining
+	 * @return {Quary} this for chaining
 	 */
 	shadow(template, options = {mode: 'open'}) {
 		for(const node of this) {
@@ -492,7 +482,7 @@ export class ShadowQuery extends Array {
 	 * });
 	 * <hello-world>Hello world?></hello-world>
 	 * @param {String=} t - string to set on nodeValue
-	 * @return {ShadowQuery|string} this for chaining or text value
+	 * @return {Quary|string} this for chaining or text value
 	 */
 	text(t) {
 		if(!arguments.length) {
@@ -515,9 +505,9 @@ export class ShadowQuery extends Array {
 	/** toggle a CSS-class on all selected nodes; uses classList.toggle
 	 * @param {string} className - the class to toggle
 	 * @param {bool=} state - if true
-	 * {@link module:shadowQuery.ShadowQuery#addClass addClass},
-	 * if false {@link module:shadowQuery.ShadowQuery#removeClass removeClass}
-	 * @return {ShadowQuery} this for chaining calls
+	 * {@link module:quary.Quary#addClass addClass},
+	 * if false {@link module:quary.Quary#removeClass removeClass}
+	 * @return {Quary} this for chaining calls
 	 */
 	toggleClass(className, state) {
 		if(arguments.length === 1) {
@@ -535,7 +525,7 @@ export class ShadowQuery extends Array {
 	}
 
 	/** Alternative to
-	 * {@link module:shadowQuery.ShadowQuery#once ShadowQuery.once}
+	 * {@link module:quary.Quary#once Quary.once}
 	 * for promise based programming . Same syntax as once, but does not accept
 	 * callback, instead returns a promise (not "this" as most other messages!)
 	 * that resolves when the event occurs.
@@ -544,30 +534,30 @@ export class ShadowQuery extends Array {
 	when(evt) {return new Promise(resolve => this.once(evt, resolve));}
 }
 
-/** Instantiate a ShadowQuery object. See {@link module:shadowQuery.ShadowQuery}
- * @param {Node|Node[]|NodeList|ShadowQuery} node - the initial node
+/** Instantiate a Quary object. See {@link module:quary.Quary}
+ * @param {Node|Node[]|NodeList|Quary} node - the initial node
  * @param {String=} selector - if passed will query node(s) with selector
- * @return {ShadowQuery} instance
+ * @return {Quary} instance
  */
-export function shadowQuery(node, selector) {
-	return new ShadowQuery(node, selector);
+export function quary(node, selector) {
+	return new Quary(node, selector);
 }
 
-export default shadowQuery;
+export default quary;
 
-const $ = shadowQuery;
+const $ = quary;
 
 function toNodes(parent, nodes, callback) {
 	if(nodes instanceof HTMLTemplateElement) {
 		return callback(nodes.content.cloneNode(true));
 	}
 	if(nodes instanceof Node) return callback(nodes);
-	if(nodes.constructor === Object) nodes = shadowQuery.template(nodes);
+	if(nodes.constructor === Object) nodes = quary.template(nodes);
 	if(typeof(nodes) === 'function') {
 		if(isProcessDynNodes(nodes)) return nodes(parent, callback);
 		else return callback(nodes());
 	}
-	if(!(nodes instanceof Array)) nodes = new ShadowQuery(nodes);
+	if(!(nodes instanceof Array)) nodes = new Quary(nodes);
 	for(const node of nodes) callback(node);
 }
 
@@ -600,7 +590,7 @@ function textNode(node, force) {
 	if(force) {
 		if(console.warn) { // eslint-disable-line no-console
 			// eslint-disable-next-line no-console
-			console.warn(`ShadowQuery is creating a text node. \
+			console.warn(`Quary is creating a text node. \
 For performance reason you should put the text node into your DOM from the \
 start (e.g. as an empty space or zero width space "&#8203;")`);
 		}
@@ -632,7 +622,7 @@ function observer(node, noself, callback, opt, origCb = callback) {
 	else node[obsKey(opt)][origCb] = observer;
 	return observer;
 }
-function obsKey(opt) {return `_shadowQueryObserver${JSON.stringify(opt)}`;}
+function obsKey(opt) {return `_quaryObserver${JSON.stringify(opt)}`;}
 
 // TODO property handlers should handle getters/setter on the node prototype
 function offProp(node, evt, callback) {
@@ -640,7 +630,7 @@ function offProp(node, evt, callback) {
 	const pKey = propKey(key);
 	if(!node[pKey]) return;
 	const listener = node[pKey].listener;
-	const idx = listener.indexOf(callback._shadowQueryNoSelf||callback);
+	const idx = listener.indexOf(callback._quaryNoSelf||callback);
 	if(idx !== -1) listener.splice(idx, 1);
 	if(listener.length) return;
 	const value = node[pKey].value;
@@ -730,14 +720,14 @@ function htmlElementProperty(node, key) {
 
 }
 
-function propKey(prop) {return `_shadowQueryProp${prop}`;}
+function propKey(prop) {return `_quaryProp${prop}`;}
 function tell(node, prop, evt) {
 	for(const listener of prop.listener) listener(prop.value, node, evt);
 }
 
 function noSelf(callback, async) {
 	let calling;
-	return callback._shadowQueryNoSelf = function() {
+	return callback._quaryNoSelf = function() {
 		if(calling) return;
 		calling = true;
 		callback();
@@ -759,10 +749,10 @@ const templates = {};
  * Instead of template string you can also pass an object in order to generate
  * a dynamic template.
  * Dynamic templates can render arrays and render conditionally. Using
- * dynamic templates together with the ShadowQuery DOM helper insertion
+ * dynamic templates together with the Quary DOM helper insertion
  * functions like `append` allows you to easily manage nodes based on dynamic
  * conditions. Note that when a condition changes to false or an array shrinks,
- * ShadowQuery DOM helper _insertion_ methods will actually _remove_ content
+ * Quary DOM helper _insertion_ methods will actually _remove_ content
  * instead of _insert_ it. See parameter description for details.
  *
  * @example
@@ -799,7 +789,7 @@ const templates = {};
  * template, or the processor of a DynTemplate if passed an object for a
  * dynamic template.
  */
-shadowQuery.template = function(template) {
+quary.template = function(template) {
 	if(typeof template === 'string') {
 		if(templates[template]) {
 			return templates[template].content.cloneNode(true);
@@ -820,8 +810,8 @@ let processDynNodesRef;
 function dynTemplate(template) {
 	const {array = [undefined], chunks, id = 'default', update} = template;
 	const tmpl = template.template;
-	const dynNodeKey = `_shadowQueryChildArrayDynNode${id}`;
-	const timeoutKey = `_shadowQueryChildArrayTimeout${id}`;
+	const dynNodeKey = `_quaryChildArrayDynNode${id}`;
+	const timeoutKey = `_quaryChildArrayTimeout${id}`;
 
 	function processDynNodes(parent, callback) {
 		if(parent[timeoutKey]) {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head><script type="module">
-import $ from 'https://cdn.jsdelivr.net/gh/schrotie/shadow-query/shadowQuery.mjs';
+import $ from '../../quary.mjs';
 
 const todoTemplate = `
 	<style>
@@ -141,9 +141,9 @@ window.customElements.define('sq-todo-filter', class extends HTMLElement {
 			Finally there's readability. The React approach may be debatable.
 			Let's concede that maintainability trumps being able to directly tell
 			how template and code interact. Still React creates a language of its
-			own while ShadowQuery uses just vanilla JavaScript - which virtually
+			own while Quary uses just vanilla JavaScript - which virtually
 			every developer should be able to read without ever having seen
-			ShadowQuery. That's because it's just a relatively simple and small
+			Quary. That's because it's just a relatively simple and small
 			library of a few shorthands for web component boilerplate.
 		</p>
 	</body>

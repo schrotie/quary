@@ -1,4 +1,4 @@
-import $ from '../../node_modules/shadow-query/shadowQuery.mjs';
+import $ from '../../node_modules/quary/quary.mjs';
 
 const template = `
 	<style>

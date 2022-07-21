@@ -1,18 +1,16 @@
 # Native Web Application Tutorial
 
-This tutorial demonstrates how to develop a modern web application from vanilla web components with a little help from [ShadowQuery] and [Redux]. The finished demo can be found in [this directory].
+This tutorial demonstrates how to develop a modern web application from vanilla web components with a little help from [Quary] and [Redux]. The finished demo can be found in [this directory].
 
 The tutorial is the final article of a three part series. [The first part] discusses why I'm doing this and what might be wrong with the currently established way of picking a major framework - a _god framework_ as [this article] nicely puts it. [Part two] is a high level discussion of all the aspects you should think about when _not_ using a framework and instead developing on your own perfect fit stack and mostly native platform technology:
 
-The result is a bleeding edge modern web app, its code comparing favorably to anything written with a god framework, its performance and footprint far better than anything you could dream to achieve with any framework - the whole application comes out of the build including ShadowQuery and Redux at a mere 7.6KB without gzipping. If you must support IE, add 30K for the polyfill.
+The result is a bleeding edge modern web app, its code comparing favorably to anything written with a god framework, its performance and footprint far better than anything you could dream to achieve with any framework - the whole application comes out of the build including Quary and Redux at a mere 7.6KB without gzipping. If you must support IE, add 30K for the polyfill.
 
 This tutorial builds upon Redux's standard [todo app tutorial]. If you are not familiar with it, head over there and go through it. I copied the Redux related code as is and won't explain anything related to it. Indeed this tutorial sets in where the Redux tutorial ends: this tutorial replaces the last chapter of the Redux tutorial "Usage with React" starting from section "Implementing Components".
 
 I won't cover web components in any depth. If you are not familiar with their concepts, please consult [Google's guide].
 
-All discussed source code can be found in the [ShadowQuery repository]. There is quite some background to the structure of the source code. Please consult the discussion of app architecture in [part two] of this article series.
-
-I created a ShadowQuery [project template](https://github.com/schrotie/shadow-query-project) to get you started right away and let you discover your specific toolchain needs as you go.
+All discussed source code can be found in the [Quary repository]. There is quite some background to the structure of the source code. Please consult the discussion of app architecture in [part two] of this article series.
 
 # Implementing components
 
@@ -21,7 +19,7 @@ I created a ShadowQuery [project template](https://github.com/schrotie/shadow-qu
 ### src/dom/add.js
 Our first component is an input with a button that allows you to add a TODO to the list.
 ```js
-import $ from '../../node_modules/shadow-query/shadowQuery.mjs';
+import $ from '../../node_modules/quary/quary.mjs';
 
 const template = `
 	<input></input>
@@ -43,21 +41,21 @@ window.customElements.define('sq-todo-add', class extends HTMLElement {
 	}
 });
 ```
-The first line imports ShadowQuery in order to make our life a lot easier. You can do all this without ShadowQuery. It "just" gets a fair bit more verbose. ShadowQuery is mostly a collection of small methods that help avoid boilerplate. In this first example I'll translate ShadowQuery helpers to vanilla so that you can get a feeling for what's happening.
+The first line imports Quary in order to make our life a lot easier. You can do all this without Quary. It "just" gets a fair bit more verbose. Quary is mostly a collection of small methods that help avoid boilerplate. In this first example I'll translate Quary helpers to vanilla so that you can get a feeling for what's happening.
 
-Next line defines the components template. If we were not using ShadowQuery this would become:
+Next line defines the components template. If we were not using Quary this would become:
 ```js
 const template = document.createElement('template');
 template.innerHTML = `...`
 ```
 After that we define our new tag `<sq-todo-add>` as a class that inherits from HTMLElement. The constructor does nothing interesting, but it _must_ always call `super()` which is HTMLElement's constructor.
 
-Now things get a bit more interesting. `connectedCallback` gets called by the platform, when an instance of `<sq-todo-add>` is inserted to the life DOM tree (its constructor gets called first). The method first attaches the components shadow DOM. Without ShadowQuery `$(this).shadow(template);` would become
+Now things get a bit more interesting. `connectedCallback` gets called by the platform, when an instance of `<sq-todo-add>` is inserted to the life DOM tree (its constructor gets called first). The method first attaches the components shadow DOM. Without Quary `$(this).shadow(template);` would become
 ```js
 this.attachShadow({mode: 'open'})
 .appendChild(template.content.cloneNode(true));
 ```
-Once the shadow DOM is attached, the component registers event listeners on its DOM. If the user either hits return in the input element or hits the "Add" button, the component's `_add` method is called. Lets consider the button event handler. Without ShadowQuery
+Once the shadow DOM is attached, the component registers event listeners on its DOM. If the user either hits return in the input element or hits the "Add" button, the component's `_add` method is called. Lets consider the button event handler. Without Quary
 ```js
 $(this, 'button').on('click', this._add.bind(this));
 ```
@@ -66,7 +64,7 @@ would become:
 this.shadowRoot.querySelector('input')
 .addEventListener('click', this._add.bind(this));
 ```
-Finally when a TODO is to be added, the component emits an event with the current value of the input and resets the input value. Without ShadowQuery `$(this, 'input').prop('value')` would become:
+Finally when a TODO is to be added, the component emits an event with the current value of the input and resets the input value. Without Quary `$(this, 'input').prop('value')` would become:
 ```js
 this.shadowRoot.querySelector('input').value
 ```
@@ -76,7 +74,7 @@ this.shadowRoot.querySelector('input').value = ''
 ```
 
 ### src/dom/filter.mjs
-The alphabetically next component is the filter radio-like thingy at the bottom that lets you filter what the list of TODO's displays. From here on I'll just explain how things work and won't go into web component basics or ShadowQuery specifics.
+The alphabetically next component is the filter radio-like thingy at the bottom that lets you filter what the list of TODO's displays. From here on I'll just explain how things work and won't go into web component basics or Quary specifics.
 ```js
 const template = `
 	<label>Show:</label>
@@ -146,7 +144,7 @@ The event the element emits on click bubbles through shadow DOM boundaries (`com
 If you care, take a second to compare this to the way the Redux/React example works. Try to follow how the click event propagates through the React code: it's really tricky. There are no events but a chain of callbacks that changes method names for each link of the chain. They cannot use event bubbling because the _container_ isn't in the DOM. So they cannot use native tech but need to re-enact an event bubbling chain which is pretty hard to read and hard-coupled while the code above is generic, straightforward to read and loosely coupled.
 
 ### src/dom/list.mjs
-As I wrote above, you can skip ShadowQuery and just write vanilla code, it's just somewhat more verbose. There is however one thing, where you would need to write a replacement: every once in a while you need to render several nodes from the content of an array. That's no magic, but it's pretty tedious to do manually, as you always _must_ keep track of already rendered nodes.
+As I wrote above, you can skip Quary and just write vanilla code, it's just somewhat more verbose. There is however one thing, where you would need to write a replacement: every once in a while you need to render several nodes from the content of an array. That's no magic, but it's pretty tedious to do manually, as you always _must_ keep track of already rendered nodes.
 
 The TODO list renders TODOs from its 'list' array property. Usually you can use attributes or properties for your component's API. However, when things get more complex - as in the case of an array - you do well to rely on properties.
 ```js
@@ -166,9 +164,9 @@ window.customElements.define('sq-todo-list', class extends HTMLElement {
 	}
 });
 ```
-ShadowQuery will keep track of nodes rendered for the array and will add or remove nodes as required. In any case it will always call the `update` method (in this case: `this._updateItem`) for each node for the array elements. `<sq-todo-list>` will then update the `sqTodo` property for each of its descendant `<sq-todo-item>`s. `<sq-todo-item>` registered an event listener above for when its `sqTodo` property is set, thus it will update its label's text and `class` attribute according to the received item and either display it stroke through or not.
+Quary will keep track of nodes rendered for the array and will add or remove nodes as required. In any case it will always call the `update` method (in this case: `this._updateItem`) for each node for the array elements. `<sq-todo-list>` will then update the `sqTodo` property for each of its descendant `<sq-todo-item>`s. `<sq-todo-item>` registered an event listener above for when its `sqTodo` property is set, thus it will update its label's text and `class` attribute according to the received item and either display it stroke through or not.
 
-Imagine the following situation: You see the full TODO list and first half of the items is "completed", the second half "active". Now you click the active filter. The ShadowQuery array handler will remove half the nodes and each of the other half will need to be updated through the update routine I explained above.
+Imagine the following situation: You see the full TODO list and first half of the items is "completed", the second half "active". Now you click the active filter. The Quary array handler will remove half the nodes and each of the other half will need to be updated through the update routine I explained above.
 
 And that's it, all presentational components covered!
 
@@ -369,18 +367,18 @@ That's it! The resulting `index.html` is a miniscule but cutting edge web applic
 
 I hope from this application template you are able to start your own native web application and help change web development for the better: for something that _all_ web developers can follow without training on some god framework first, for a web of truly portable components and unit-testable, profilable and great performing native apps.
 
-If you want to get started with your own project right away, consider using my ShadowQuery [project template]. This lets you start right away. You can then swap out parts as you discover your specific needs as you go.
+If you want to get started with your own project right away, consider using my Quary [project template]. This lets you start right away. You can then swap out parts as you discover your specific needs as you go.
 
 If you have any questions or suggestions, please leave a comment under [the original article].
 
-[ShadowQuery]: https://github.com/schrotie/shadow-query
+[Quary]: https://github.com/schrotie/quary
 [Redux]: https://redux.js.org/
-[this directory]: https://github.com/schrotie/shadow-query/tree/master/demo/todoRedux
+[this directory]: https://github.com/schrotie/quary/tree/master/demo/todoRedux
 [The first part]: https://blog.roggendorf.pro/2018/11/15/web-platform-to-the-rescue/
 [Part two]: https://blog.roggendorf.pro/2018/11/17/the-perfect-web-application-framework/
 [this article]:  https://www.codemag.com/article/1501101/Why-Micro-JavaScript-Library-Should-Be-Used-in-Your-Next-Application
 [todo app tutorial]: https://redux.js.org/basics
 [Google's guide]: https://developers.google.com/web/fundamentals/web-components/customelements
-[ShadowQuery repository]: https://github.com/schrotie/shadow-query/tree/master/demo/todoRedux
-[project template]: https://github.com/schrotie/shadow-query-project
+[Quary repository]: https://github.com/schrotie/quary/tree/master/demo/todoRedux
+[project template]: https://github.com/schrotie/quary-project
 [the original article]: https://blog.roggendorf.pro/2018/11/19/native-web-application-tutorial/

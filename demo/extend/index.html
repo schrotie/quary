@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<script type="module">
-import {ShadowQuery} from '../../shadowQuery.mjs';
+import {Quary} from '../../quary.mjs';
 
 
-class MyShadowQuery extends ShadowQuery {
+class MyQuary extends Quary {
 	// Default constructor can be ommitted!
 	// constructor(...arg) {super(...arg);}
 
@@ -13,7 +13,7 @@ class MyShadowQuery extends ShadowQuery {
 		const   toSplit =   to.split(':');
 		const fromSplit = from.split(':');
 		if((toSplit.length !== 2) || (fromSplit.length !== 2)) {
-			throw new Error('Invalid call to ShadowQuery.bind', from, to);
+			throw new Error('Invalid call to Quary.bind', from, to);
 		}
 		for(let node of this) for(let tgt of toNodes(target)) {
 			$(node).on(from, 'noSelf', bind($(node), $(tgt), fromSplit, toSplit));
@@ -36,14 +36,14 @@ class MyShadowQuery extends ShadowQuery {
 				node.style[key] = prop[key];
 			}
 		}
-		else throw new Error('Invalid call to ShadowQuery.css', ...arguments);
+		else throw new Error('Invalid call to Quary.css', ...arguments);
 		return this;
 	}
 }
 
 function toNodes(nodes, callback) {
 	if(nodes instanceof Node) return [nodes];
-	if(!(nodes instanceof Array)) nodes = new ShadowQuery(nodes);
+	if(!(nodes instanceof Array)) nodes = new Quary(nodes);
 	return nodes;
 }
 
@@ -56,7 +56,7 @@ function bind(source, target, from, to) {return function() {
 	else target[to[0]](to[1], source[from[0]](from[1]));
 };}
 
-function $(...arg) {return new MyShadowQuery(...arg);}
+function $(...arg) {return new MyQuary(...arg);}
 
 const template = `
 <style>

@@ -6,7 +6,7 @@ import {AddConnector}    from './logic/connectors/add.mjs';
 import {ListConnector}   from './logic/connectors/list.mjs';
 import {FilterConnector} from './logic/connectors/filter.mjs';
 
-import $ from '../node_modules/shadow-query/shadowQuery.mjs';
+import $ from '../node_modules/quary/quary.mjs';
 
 const template = `
 	<style>

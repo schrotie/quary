@@ -1,7 +1,7 @@
 [Content] [Previous] [Next]
 
 # TODO List Application
-In the [previous] tutorial we have explored a couple of ShadowQuery features. Here we will learn how to stitch that together to a small application of components that work together.
+In the [previous] tutorial we have explored a couple of Quary features. Here we will learn how to stitch that together to a small application of components that work together.
 
 Play with the "TODO list" demo at [codepen].
 
@@ -15,7 +15,7 @@ The template of `<sq-todo>` should contain no surprises for you, if you did the 
 <sq-todo-list></sq-todo-list>
 <sq-todo-filter></sq-todo-filter>
 ```
-`<sq-todo>`'s constructor first instantiates its shadow DOM and then pulls off a new ShadowQuery trick that we haven't seen, yet:
+`<sq-todo>`'s constructor first instantiates its shadow DOM and then pulls off a new Quary trick that we haven't seen, yet:
 ```js
 [this._add, this._list, this._filter] = $(this, 'style ~ *').map(el => $(el));
 ```
@@ -24,9 +24,9 @@ First, if you haven't seen such, this is desctructuring assignment, an ES6 featu
 const [a, b] = [1, 2];
 console.log(a); // -> 1
 ```
-Here we have an array of `this._*` on the left. This creates a couple of instance variables, that allows `<sq-todo>` simpler access to its DOM further down in the code. You may frequently like to do something like this, especially in performance critical code. Thus you do the ShadowQuery objects initialization only once, instead of each time you need access.
+Here we have an array of `this._*` on the left. This creates a couple of instance variables, that allows `<sq-todo>` simpler access to its DOM further down in the code. You may frequently like to do something like this, especially in performance critical code. Thus you do the Quary objects initialization only once, instead of each time you need access.
 
-On the right we have a ShadowQuery object. ShadowQuery inherits from Array, so any ShadowQuery object _is_ an array! This one selects all of the elements in the shadow DOM after the style, i.e. the three top-level nodes we saw in the template above. Then it calls Array's `map` method to make another ShadowQuery object of each selected element, and finally assigns the result to `<sq-todo>`'s instance properties.
+On the right we have a Quary object. Quary inherits from Array, so any Quary object _is_ an array! This one selects all of the elements in the shadow DOM after the style, i.e. the three top-level nodes we saw in the template above. Then it calls Array's `map` method to make another Quary object of each selected element, and finally assigns the result to `<sq-todo>`'s instance properties.
 
 Next it creates one array with the `initialTodos`. In a real application this would likely be empty, but for the tutorial it's nicer to have some dummies there from the start. `initialTodos` will never be overwritten, it is apart from the filter setting the complete, persistent application state. Various components will change it and thus communicate.
 
@@ -81,7 +81,7 @@ Which brings us to `<sq-todo-item>`. We have already covered most of what it doe
 $(this, 'label').text(this.todo && this.todo.value)
 .toggleClass('done', this.todo && this.todo.done);
 ```
-When the element's `todo` property changes, the string of the label will be updated and the label's "done" class will be toggled depending on the TODO item's status. This uses chaining of calls, which is supported by all of ShadowQuery's methods - they return this, so that you can call several methods on one query.
+When the element's `todo` property changes, the string of the label will be updated and the label's "done" class will be toggled depending on the TODO item's status. This uses chaining of calls, which is supported by all of Quary's methods - they return this, so that you can call several methods on one query.
 
 Last not least we cover the `<sq-todo-filter>` component. Again the code should at this point hold no surprises for you. Just one note: the first line of its "click" handler sets its "data-filter" attribute with
 ```js
@@ -89,10 +89,10 @@ $(this, ':host').attr('data-filter', evt.composedPath()[0].id);
 ```
 This is the other side of the attribute data binding we discussed for `<sq-todo>`. Also on this occasion please recall the discussion of the ":host" selector in the previous tutorial. Here is a good spot to test that. You can remove the selector and observe the application stopping to work :-)
 
-That's it! Our first application is done. Now I spent quite some time explaining to you that the app architecture is terrible. Still all of ShadowQuery's features that make this easy to wire up this way are very useful in many situations. And [next] we'll explore how to morph our TODO list into a great architecture!
+That's it! Our first application is done. Now I spent quite some time explaining to you that the app architecture is terrible. Still all of Quary's features that make this easy to wire up this way are very useful in many situations. And [next] we'll explore how to morph our TODO list into a great architecture!
 
 [codepen]: https://codepen.io/schrotie/pen/jQaeby
-[Previous]: https://github.com/schrotie/shadow-query/tree/master/demo/helloFramework
-[here]: https://github.com/schrotie/shadow-query/tree/master/demo/todo
-[Content]: https://github.com/schrotie/shadow-query/tree/master/demo
-[Next]: https://github.com/schrotie/shadow-query/tree/master/demo/todoRedux
+[Previous]: https://github.com/schrotie/query/tree/master/demo/helloFramework
+[here]: https://github.com/schrotie/query/tree/master/demo/todo
+[Content]: https://github.com/schrotie/query/tree/master/demo
+[Next]: https://github.com/schrotie/query/tree/master/demo/todoRedux

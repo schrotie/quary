@@ -35,7 +35,7 @@ function describeCoverageTest() {
 	after(done => {
 		puppeteerStopCoverage()
 		.then(coverage => {
-			const sq = /shadowQuery\.mjs/;
+			const sq = /quary\.mjs/;
 			coverage = coverage.js.filter(el => sq.test(el.url))[0];
 			let totalBytes = coverage.text.length, usedBytes = 0;
 			for(let range of coverage.ranges) usedBytes += range.end - range.start - 1;
