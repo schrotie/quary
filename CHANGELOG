@@ -1,3 +1,7 @@
+1.0.1
+* fixed exception that occurred when a node added from a dyn-template
+  was to be removed but was not any longer a direct child of the node it
+  was previously added to
 1.0.0
 * renamed package from shadow-query to quary and adapted code and docs
 * adapted docs for 1.0 release

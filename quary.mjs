@@ -830,7 +830,14 @@ function dynTemplate(template) {
 		function removeNodes(from) {
 			for(let i = from; i < nodes.length; i++) {
 				for(let j = 0; j < nodes[i].length; j++) {
-					parent.removeChild(nodes[i][j]);
+					try {parent.removeChild(nodes[i][j]);}
+					catch(e) {if(parent.contains(nodes[i][j])) {
+						for(let k = 0; k < parent.children.length; k++) {
+							if(parent.children[k].contains(nodes[i][j])) {
+								parent.removeChild(parent.children[k]);
+							}
+						}
+					}}
 				}
 			}
 			nodes.splice(from);
